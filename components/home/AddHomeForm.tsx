@@ -177,6 +177,7 @@ const AddHotelForm = ({ home }: HomeFormProps) => {
     if (countryStates) {
       setStates(countryStates);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCountry]);
 
   useEffect(() => {
@@ -184,6 +185,7 @@ const AddHotelForm = ({ home }: HomeFormProps) => {
     if (stateCities) {
       setCities(stateCities);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCountry, selectedState]);
 
   function onSubmit(values: z.infer<typeof HomeSchema>) {
@@ -861,7 +863,7 @@ const AddHotelForm = ({ home }: HomeFormProps) => {
           <FormField
             control={form.control}
             name="image"
-            render={({ field }) => (
+            render={() => (
               <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                 <FormLabel>Upload Image</FormLabel>
                 <FormDescription>

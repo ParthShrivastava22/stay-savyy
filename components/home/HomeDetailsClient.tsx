@@ -320,7 +320,8 @@ export default function HomeDetailsClient({ home }: { home: HomeFormData }) {
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                You won't be charged yet. Complete your booking to confirm.
+                You won`&apos;`t be charged yet. Complete your booking to
+                confirm.
               </p>
             </CardContent>
           </Card>
