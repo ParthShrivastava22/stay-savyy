@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Home {
+  id             String        @id @default(uuid())
+  title          String
+  description    String
+  address        String
+  pricePerNight  Int
+  bedrooms       Int
+  bathrooms      Float
+  propertyType   PropertyType
+  maxGuests      Int
+  country        String
+  state          String
+  city           String
+  availableFrom  DateTime
+  availableTo    DateTime?
+  hostId         String        // Clerk user ID
+
+  // Amenities
+  hasWifi        Boolean       @default(false)
+  hasKitchen     Boolean       @default(false)
+  hasLaundry     Boolean       @default(false)
+  hasParking     Boolean       @default(false)
+  hasAirConditioning Boolean   @default(false)
+  hasHeating     Boolean       @default(false)
+  hasPool        Boolean       @default(false)
+  hasGym         Boolean       @default(false)
+  petsAllowed    Boolean       @default(false)
+  smokingAllowed Boolean       @default(false)
+
+  bookings       Booking[]
+  image         String   // One-to-many relationship
+}
+
+model Booking {
+  id          String        @id @default(uuid())
+  home        Home          @relation(fields: [homeId], references: [id])
+  homeId      String
+
+  userId      String?        // Clerk user ID
+  emailId     String?
+  phoneNo     String?
+
+  startDate   DateTime
+  endDate     DateTime
+
+  totalPrice  Int
+
+  status      BookingStatus @default(PENDING)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([homeId])
+  @@index([userId])
+}
+
+enum PropertyType {
+  HOUSE
+  APARTMENT
+  CONDO
+  TOWNHOUSE
+  CABIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
