@@ -2,10 +2,7 @@ import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  req: Request,
-  { params }: { params: { homeId: string } }
-) {
+export async function GET({ params }: { params: { homeId: string } }) {
   const { userId } = await auth();
   const awaitedParams = await params;
 
