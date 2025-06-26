@@ -1,8 +1,7 @@
 import { getHomeById } from "@/actions/getHomeById";
 import HomeDetailsClient from "@/components/home/HomeDetailsClient";
-import { PageProps } from "@/.next/types/app/layout";
 
-interface HomeDetailsProps extends PageProps {
+interface HomeDetailsProps {
   params: Promise<{ homeId: string }>; // ✅ Extends PageProps
 }
 
