@@ -28,7 +28,7 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { homeId: string } }
+  { params }: { params: Promise<{ homeId: string }> }
 ) {
   try {
     const body = await req.json();
@@ -57,7 +57,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { homeId: string } }
+  { params }: { params: Promise<{ homeId: string }> }
 ) {
   try {
     const { userId } = await auth();
