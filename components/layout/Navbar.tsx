@@ -11,7 +11,7 @@ import { NavMenu } from "./NavMenu";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
-const NavBar = () => {
+export default function NavBar() {
   const router = useRouter();
   const { userId } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -126,6 +126,4 @@ const NavBar = () => {
       </Container>
     </div>
   );
-};
-
-export default NavBar;
+}

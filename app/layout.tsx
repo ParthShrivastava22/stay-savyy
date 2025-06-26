@@ -4,7 +4,7 @@ import NavBar from "@/components/layout/Navbar";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Container from "@/components/Container";
-import { Toaster } from "@/components/ui/sonner";
+import ClientToaster from "@/components/ClientToaster"; // Fixed client component
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +42,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Toaster />
+            <ClientToaster /> {/* Fixed */}
             <main className="flex flex-col min-h-screen bg-secondary">
               <NavBar />
               <section className="flex-grow">
